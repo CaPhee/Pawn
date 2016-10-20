@@ -1,0 +1,97 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="UsersForm" type="form.UsersForm"></form-bean>
+		<form-bean name="danhSachPhieuCamForm" type="form.DanhSachPhieuCamForm"></form-bean>
+		<form-bean name="danhSachSanPhamForm" type="form.DanhSachSanPhamForm"></form-bean>
+		<form-bean name="sanphamForm" type="form.SanPhamForm"></form-bean>
+		<form-bean name="phieuCamForm" type="form.PhieuCamForm"></form-bean>
+		<form-bean name="danhSachPhieuChuocForm" type="form.DanhSachPhieuChuocForm"></form-bean>
+		<form-bean name="khachHangForm" type="form.KhachHangForm" />
+		<form-bean name="danhSachKhachHangForm" type="form.DanhSachKhachHangForm" /><form-bean
+			name="phieuChuocForm" type="form.PhieuChuocForm">
+</form-bean>
+		<form-bean name="thongKeForm" type="form.ThongKeForm"></form-bean>
+	</form-beans>
+	<action-mappings>
+		<action path="/login" input="/login.jsp" name="UsersForm"
+			scope="session" type="action.UsersAction">
+			<forward name="success" path="/trangchu.jsp" redirect="true">
+			</forward>
+			<forward name="fail" path="/login.jsp"></forward>
+		</action>
+		<action path="/danh-sach-phieu-cam" input="/login.jsp"
+			name="danhSachPhieuCamForm" scope="request" type="action.DanhSachPhieuCamAction">
+			<forward name="dsPhieuCam" path="/danhsachphieucam.jsp"></forward>
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		<action path="/ds-chi-tiet-phieu-cam" input="/trangchu.jsp"
+			name="danhSachPhieuCamForm" scope="request"
+			type="action.DanhSachChiTietPhieuCamAction">
+			<forward name="dsChiTiet" path="/danhsachchitietphieucam.jsp"></forward>
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		<action path="/them-phieu-cam" input="/themphieucam.jsp" name="phieuCamForm"
+			scope="request" type="action.ThemPhieuCamAction">
+			<forward name="themchitiet" path="/chitietphieucam.jsp"></forward>
+			<forward name="themphieucam" path="/themphieucam.jsp"></forward>
+			<forward name="hoantat" path="danh-sach-phieu-cam.do"
+				redirect="true">
+			</forward>
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		<action input="/trangchu.jsp" name="danhSachSanPhamForm" path="/danh-sach-sp"
+			scope="request" type="action.DanhSachSanPhamAction">
+			<forward name="dsSanPham" path="/danhsachsp.jsp" />
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		<action path="/danh-sach-phieu-chuoc" input="/trangchu.jsp"
+			name="danhSachPhieuChuocForm" scope="request" type="action.DanhSachPhieuChuocAction">
+			<forward name="dsPhieuChuoc" path="/danhsachphieuchuoc.jsp"></forward>
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		
+		<action input="/trangchu.jsp" name="danhSachKhachHangForm"
+			path="/danh-sachKH" scope="request" type="action.DanhSachKhachHangAction">
+			<forward name="dsKhachHang" path="/danhsachkhachhang.jsp"></forward>
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		<action input="/themkhachhang.jsp" name="khachHangForm" path="/themKH"
+			scope="request" type="action.ThemKhachHangAction">
+			<forward name="themKH" path="/themkhachhang.jsp"></forward>
+			<forward name="themKHerror" path="/themkhachhang.jsp"></forward>
+			<forward name="themKHxong" path="/danh-sachKH.do" redirect="true"></forward>
+			<forward name="login" path="/login.do"></forward>
+		</action>
+		<action path="/them-phieu-chuoc" input="/danhsachphieuchuoc.jsp"
+			name="phieuChuocForm" scope="request" type="action.ThemPhieuChuocAction">
+			<forward name="login" path="/login.do"></forward>
+			<forward name="themphieuchuoc" path="/themphieuchuoc.jsp"></forward>
+			<forward name="themchitietchuoc" path="/chitietphieuchuoc.jsp"></forward>
+			<forward name="hoantat" path="/danh-sach-phieu-chuoc.do"></forward>
+		</action>
+		<action path="/thong-ke" input="/thongke.jsp" name="thongKeForm"
+			scope="request" type="action.ThongKeAction">
+			<forward name="thongke" path="/thongke.jsp"></forward>
+		</action>
+		<action path="/suaKH" input="/suakhachhang.jsp"
+			name="khachHangForm" scope="request" type="action.SuaKhachHangAction">
+			<forward name="suaKHxong" path="/danh-sachKH.do"></forward>
+			<forward name="suaKH" path="/suakhachhang.jsp"></forward>
+		</action>
+		<action path="/list-chi-tiet-phieu-chuoc"
+			input="/danhsachphieuchuoc.jsp" name="danhSachPhieuChuocForm"
+			scope="request" type="action.DanhSachChiTietPhieuChuocAction">
+			<forward name="login" path="/login.jsp"></forward>
+			<forward name="dsChiTietChuoc" path="/danhsachchitietphieuchuoc.jsp"></forward>
+		</action>
+		<action path="/cap-nhat-sp" input="/danhsachsp.jsp"
+			name="danhSachSanPhamForm" scope="request" type="action.CapNhatAction">
+			<forward name="capnhatxong" path="/danhsachsp.jsp"></forward>
+		</action>
+	</action-mappings>
+	<message-resources parameter="action.ApplicationResources"></message-resources>
+
+</struts-config>
